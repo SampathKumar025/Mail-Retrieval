@@ -45,21 +45,21 @@ http://stackoverflow.com/questions/388490/unicode-characters-in-windows-command-
 Here is a run of gmane.py getting the last five messages of the
 sakai developer list:
 
-Mac: python3 gmane.py 
-Win: gmane.py 
+    python3 gmane.py    # Mac
+    py gmane.py         # Windows
 
-How many messages:10
-http://mbox.dr-chuck.net/sakai.devel/1/2 2662
-    ggolden@umich.edu 2005-12-08T23:34:30-06:00 call for participation: developers documentation
-http://mbox.dr-chuck.net/sakai.devel/2/3 2434
-    csev@umich.edu 2005-12-09T00:58:01-05:00 report from the austin conference:  sakai developers break into song
-http://mbox.dr-chuck.net/sakai.devel/3/4 3055
-    kevin.carpenter@rsmart.com 2005-12-09T09:01:49-07:00 cas and sakai 1.5
-http://mbox.dr-chuck.net/sakai.devel/4/5 11721
-    michael.feldstein@suny.edu 2005-12-09T09:43:12-05:00 re: lms/vle rants/comments
-http://mbox.dr-chuck.net/sakai.devel/5/6 9443
-    john@caret.cam.ac.uk 2005-12-09T13:32:29+00:00 re: lms/vle rants/comments
-Does not start with From 
+    How many messages:10
+    http://mbox.dr-chuck.net/sakai.devel/1/2 2662
+        ggolden@umich.edu 2005-12-08T23:34:30-06:00 call for participation: developers documentation
+    http://mbox.dr-chuck.net/sakai.devel/2/3 2434
+        csev@umich.edu 2005-12-09T00:58:01-05:00 report from the austin conference:  sakai developers break into song
+    http://mbox.dr-chuck.net/sakai.devel/3/4 3055
+        kevin.carpenter@rsmart.com 2005-12-09T09:01:49-07:00 cas and sakai 1.5
+    http://mbox.dr-chuck.net/sakai.devel/4/5 11721
+        michael.feldstein@suny.edu 2005-12-09T09:43:12-05:00 re: lms/vle rants/comments
+    http://mbox.dr-chuck.net/sakai.devel/5/6 9443
+        john@caret.cam.ac.uk 2005-12-09T13:32:29+00:00 re: lms/vle rants/comments
+    Does not start with From 
 
 The program scans content.sqlite from 1 up to the first message number not
 already spidered and starts spidering at that message.  It continues spidering
@@ -95,15 +95,15 @@ data cleaning process.
 
 Running gmodel.py works as follows:
 
-Mac: python3 gmodel.py
-Win: gmodel.py
+    python3 gmodel.py       # Mac
+    py gmodel.py            # Windows
 
-Loaded allsenders 1588 and mapping 28 dns mapping 1
-1 2005-12-08T23:34:30-06:00 ggolden22@mac.com
-251 2005-12-22T10:03:20-08:00 tpamsler@ucdavis.edu
-501 2006-01-12T11:17:34-05:00 lance@indiana.edu
-751 2006-01-24T11:13:28-08:00 vrajgopalan@ucmerced.edu
-...
+    Loaded allsenders 1588 and mapping 28 dns mapping 1
+    1 2005-12-08T23:34:30-06:00 ggolden22@mac.com
+    251 2005-12-22T10:03:20-08:00 tpamsler@ucdavis.edu
+    501 2006-01-12T11:17:34-05:00 lance@indiana.edu
+    751 2006-01-24T11:13:28-08:00 vrajgopalan@ucmerced.edu
+    ...
 
 The gmodel.py program does a number of data cleaing steps
 
@@ -122,14 +122,14 @@ you to map both domain names and individual email addresses that change over
 the lifetime of the email list.  For example, Steve Githens used the following
 email addresses over the life of the Sakai developer list:
 
-s-githens@northwestern.edu
-sgithens@cam.ac.uk
-swgithen@mtu.edu
+    s-githens@northwestern.edu
+    sgithens@cam.ac.uk
+    swgithen@mtu.edu
 
 We can add two entries to the Mapping table
 
-s-githens@northwestern.edu ->  swgithen@mtu.edu
-sgithens@cam.ac.uk -> swgithen@mtu.edu
+    s-githens@northwestern.edu ->  swgithen@mtu.edu
+    sgithens@cam.ac.uk -> swgithen@mtu.edu
 
 And so all the mail messages will be collected under one sender even if 
 they used several email addresses over the lifetime of the mailing list.
@@ -138,7 +138,7 @@ You can also make similar entries in the DNSMapping table if there are multiple
 DNS names you want mapped to a single DNS.  In the Sakai data I add the following
 mapping:
 
-iupui.edu -> indiana.edu
+    iupui.edu -> indiana.edu
 
 So all the folks from the various Indiana University campuses are tracked together
 
@@ -150,25 +150,25 @@ analysis.   With this file, data analysis will be really quick.
 The first, simplest data analysis is to do a "who does the most" and "which 
 organzation does the most"?  This is done using gbasic.py:
 
-Mac: python3 gbasic.py 
-Win: gbasic.py 
+    python3 gbasic.py       # Mac
+    py gbasic.py            # Windows
 
-How many to dump? 5
-Loaded messages= 51330 subjects= 25033 senders= 1584
+    How many to dump? 5
+    Loaded messages= 51330 subjects= 25033 senders= 1584
 
-Top 5 Email list participants
-steve.swinsburg@gmail.com 2657
-azeckoski@unicon.net 1742
-ieb@tfd.co.uk 1591
-csev@umich.edu 1304
-david.horwitz@uct.ac.za 1184
+    Top 5 Email list participants
+    steve.swinsburg@gmail.com 2657
+    azeckoski@unicon.net 1742
+    ieb@tfd.co.uk 1591
+    csev@umich.edu 1304
+    david.horwitz@uct.ac.za 1184
 
-Top 5 Email list organizations
-gmail.com 7339
-umich.edu 6243
-uct.ac.za 2451
-indiana.edu 2258
-unicon.net 2055
+    Top 5 Email list organizations
+    gmail.com 7339
+    umich.edu 6243
+    uct.ac.za 2451
+    indiana.edu 2258
+    unicon.net 2055
 
 You can look at the data in index.sqlite and if you find a problem, you 
 can update the Mapping table and DNSMapping table in content.sqlite and
@@ -177,11 +177,11 @@ re-run gmodel.py.
 There is a simple vizualization of the word frequence in the subject lines
 in the file gword.py:
 
-Mac: python3 gword.py
-Win: gword.py
+    python3 gword.py        # Mac
+    py gword.py             # Windows
 
-Range of counts: 33229 129
-Output written to gword.js
+    Range of counts: 33229 129
+    Output written to gword.js
 
 This produces the file gword.js which you can visualize using the file 
 gword.htm.
@@ -189,13 +189,13 @@ gword.htm.
 A second visualization is in gline.py.  It visualizes email participation by 
 organizations over time.
 
-Mac: python3 gline.py 
-Win: gline.py 
+    python3 gline.py           # Mac
+    py gline.py                # Windows
 
-Loaded messages= 51330 subjects= 25033 senders= 1584
-Top 10 Oranizations
-['gmail.com', 'umich.edu', 'uct.ac.za', 'indiana.edu', 'unicon.net', 'tfd.co.uk', 'berkeley.edu', 'longsight.com', 'stanford.edu', 'ox.ac.uk']
-Output written to gline.js
+    Loaded messages= 51330 subjects= 25033 senders= 1584
+    Top 10 Oranizations
+    ['gmail.com', 'umich.edu', 'uct.ac.za', 'indiana.edu', 'unicon.net', 'tfd.co.uk', 'berkeley.edu', 'longsight.com', 'stanford.edu', 'ox.ac.uk']
+    Output written to gline.js
 
 Its output is written to gline.js which is visualized using gline.htm.
 
@@ -214,9 +214,3 @@ http://bost.ocks.org/mike/uberdata/
 http://mbostock.github.io/d3/talk/20111018/calendar.html
 
 http://nltk.org/install.html
-
-As always - comments welcome.
-
--- Dr. Chuck
-Sun Sep 29 00:11:01 EDT 2013
-
